@@ -222,7 +222,7 @@ int read_config(const std::string & conf_file)
   if (! cfg.lookupValue("repo_dir", repo_dir))
   {
     if (package_manager == "sbopkg")
-      repo_dir = "/var/lib/sbopkg/SBo/14.2";
+      repo_dir = "/var/lib/sbopkg/SBo-git/current";
     else if (package_manager == "sbotools")
       repo_dir = "/usr/sbo/repo";
     else if (package_manager == "built-in")
@@ -239,7 +239,7 @@ int read_config(const std::string & conf_file)
     std::getline(std::cin, response);
   }
 
-  if (! cfg.lookupValue("repo_tag", repo_tag)) { repo_tag = "_SBo"; }
+  if (! cfg.lookupValue("repo_tag", repo_tag)) { repo_tag = "_SBo-git"; }
 
   if ( (package_manager != "sbopkg") && (package_manager != "sbotools") &&
        (package_manager != "built-in") && (package_manager != "custom") )
