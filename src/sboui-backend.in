@@ -69,10 +69,10 @@ function get_current_version ()
 }
 
 ################################################################################
-# Checks if Ponce's git repo is being used
-function check_ponce_repo ()
+# Checks if ~red's git repo is being used
+function check_red_repo ()
 {
-  if [ "$REPO" == "https://github.com/Ponce/slackbuilds.git" ]; then
+  if [ "$REPO" == "https://github.com/RSKYS/SBo-git.git" ]; then
     echo 1
   else
     echo 0
@@ -118,8 +118,8 @@ function checkout_git_branch ()
 # Syncs git repo with local copy
 function update ()
 {
-  # Check if Ponce's git repo is being used
-  local PONCEREPO=$(check_ponce_repo)
+  # Check if ~red's git repo is being used
+  local REDREPO=$(check_red_repo)
   local BASEDIR=$(basename $REPO_DIR)
   local CHECK=0
   
@@ -133,7 +133,7 @@ function update ()
     if [ $CHECK -ne 0 ]; then
       exit $CHECK
     fi
-    if [ $PONCEREPO -eq 0 ]; then
+    if [ $REDREPO -eq 0 ]; then
       cd $BASEDIR
       CHECK=$(checkout_git_branch $BRANCH)
       if [ $CHECK -ne 0 ]; then
@@ -141,10 +141,8 @@ function update ()
       fi
     fi
 
-  # Master branch can just use git pull, but Ponce's must be re-downloaded
-  # http://www.linuxquestions.org/questions/slackware-14/what-is-the-correct-url-and-command-to-git-clone-slackbuilds-current-4175578557/#post5537842
   else
-    if [ $PONCEREPO -eq 0 ]; then
+    if [ $REDREPO -eq 0 ]; then
       cd $REPO_DIR
       CHECK=$(checkout_git_branch $BRANCH)
       if [ $CHECK -ne 0 ]; then

@@ -6,7 +6,7 @@
           in if sboui-update-notifier is a startup app. This adds psutil as
           a dependency for sboui-update-notifier.
         * Allow install to proceed with a warning if deps are missing. This
-          occurs commonly on -current/ponce's repo when things are added to
+          occurs commonly on -current/~red's repo when things are added to
           Slackware and removed from the repo but not removed from REQUIRES
           lines in .info files.
         * Improved reinstall behavior with sbotools.
